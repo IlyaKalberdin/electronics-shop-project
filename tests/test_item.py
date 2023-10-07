@@ -18,7 +18,7 @@ def test_Item():
     test_item1.apply_discount()
     assert test_item1.price == 24750
 
-    # Тест общего аттрибута класса
+    # Тест общего атрибута класса
     test_item2 = Item("Наушники", 15000, 5)
 
     assert len(Item.all) == 2
