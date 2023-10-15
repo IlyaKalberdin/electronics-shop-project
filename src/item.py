@@ -37,10 +37,16 @@ class Item:
 
     @property
     def name(self):
+        """
+        Возвращает значение приватного аргумента
+        """
         return self.__name
 
     @name.setter
     def name(self, name):
+        """
+        Функция, позволяющая поменять значение приватного аргумента
+        """
         if len(name) > 10:
             print("Exception: Длина наименования товара превышает 10 символов")
         else:
@@ -48,6 +54,9 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls, path):
+        """
+        Функция, создающая экземпляры класса на основе файла items.csv
+        """
         cls.all = []
 
         with open(path, encoding="cp1251") as csvfile:
@@ -58,4 +67,7 @@ class Item:
 
     @staticmethod
     def string_to_number(string):
+        """
+        Функция преобразует str в int и возвращает значение
+        """
         return int(float(string))
