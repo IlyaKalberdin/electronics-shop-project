@@ -21,6 +21,18 @@ class Item:
         self.quantity = quantity
         Item.all.append(self)
 
+    def __repr__(self):
+        """
+        Функция возвращает название класса и все аргументы экземпляра
+        """
+        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        """
+        Функция возвращает наименование товара
+        """
+        return f"{self.name}"
+
     def calculate_total_price(self) -> float:
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
@@ -37,10 +49,16 @@ class Item:
 
     @property
     def name(self):
+        """
+        Возвращает значение приватного аргумента
+        """
         return self.__name
 
     @name.setter
     def name(self, name):
+        """
+        Функция, позволяющая поменять значение приватного аргумента
+        """
         if len(name) > 10:
             print("Exception: Длина наименования товара превышает 10 символов")
         else:
@@ -48,6 +66,9 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls, path):
+        """
+        Функция, создающая экземпляры класса на основе файла items.csv
+        """
         cls.all = []
 
         with open(path, encoding="cp1251") as csvfile:
@@ -58,4 +79,7 @@ class Item:
 
     @staticmethod
     def string_to_number(string):
+        """
+        Функция преобразует str в int и возвращает значение
+        """
         return int(float(string))

@@ -52,3 +52,13 @@ def test_Item_string_to_number():
     assert Item.string_to_number('5') == 5
     assert Item.string_to_number('5.0') == 5
     assert Item.string_to_number('5.5') == 5
+
+
+def test_repr(test_Item):
+    """Тест для метода __repr__ класса Item"""
+    assert repr(test_Item) == "Item('Телевизор', 49500.0, 25)"
+
+
+def test_str(test_Item):
+    """Тест для метода __str__ класса Item"""
+    assert str(test_Item) == "Телевизор"
