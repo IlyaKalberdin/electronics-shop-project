@@ -62,3 +62,12 @@ def test_repr(test_Item):
 def test_str(test_Item):
     """Тест для метода __str__ класса Item"""
     assert str(test_Item) == "Телевизор"
+
+
+def test_Item_add():
+    """Тест для метода __add__ класса Item"""
+    item1 = Item("Телефон", 25000, 30)
+    item2 = Item("Ноутбук", 40000, 15)
+
+    assert item1 + item2 == 45
+    assert item1 + 30 is None
