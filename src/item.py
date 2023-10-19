@@ -33,6 +33,15 @@ class Item:
         """
         return f"{self.name}"
 
+    def __add__(self, other):
+        """
+        Метод складывает экземпляры класса по кол-ву товара
+        и возвращает сумму
+        """
+        if isinstance(other, Item):
+            return self.quantity + other.quantity
+        return None
+
     def calculate_total_price(self) -> float:
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
