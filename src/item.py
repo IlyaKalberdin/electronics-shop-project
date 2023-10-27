@@ -1,4 +1,5 @@
 import csv
+from src.instantiatecsverror import InstantiateCSVError
 
 
 class Item:
@@ -81,11 +82,19 @@ class Item:
         """
         cls.all = []
 
-        with open(path, encoding="cp1251") as csvfile:
-            reader = csv.DictReader(csvfile)
+        try:
+            with open(path, encoding="cp1251") as csvfile:
+                reader = csv.DictReader(csvfile)
 
-            for row in reader:
-                item = cls(row["name"], row["price"], row["quantity"])
+                for row in reader:
+                    if ("name", "price", "quantity") not in row:
+                        raise InstantiateCSVError
+
+                    item = cls(row["name"], row["price"], row["quantity"])
+        except FileNotFoundError:
+            print("Отсутствует файл item.csv")
+        except InstantiateCSVError as csv_error:
+            print(csv_error.message)
 
     @staticmethod
     def string_to_number(string):
