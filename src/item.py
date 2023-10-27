@@ -87,7 +87,7 @@ class Item:
                 reader = csv.DictReader(csvfile)
 
                 for row in reader:
-                    if ("name", "price", "quantity") not in row:
+                    if len(row) < 3:
                         raise InstantiateCSVError
 
                     item = cls(row["name"], row["price"], row["quantity"])
