@@ -4,6 +4,7 @@ from src.item import Item
 
 @pytest.fixture
 def test_Item():
+    """Тестовые данные"""
     test_item1 = Item("Телевизор", 49500.00, 25)
 
     return test_item1
@@ -45,6 +46,12 @@ def test_Item_instantiate_from_csv():
     """Тест для метода instantiate_from_csv класса Item"""
     Item.instantiate_from_csv("src/items.csv")
     assert len(Item.all) == 5
+
+    Item.instantiate_from_csv("")
+    assert len(Item.all) == 0
+
+    Item.instantiate_from_csv("src/itemserror.csv")
+    assert len(Item.all) == 0
 
 
 def test_Item_string_to_number():
