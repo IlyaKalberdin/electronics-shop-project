@@ -1,10 +1,10 @@
 import pytest
-from src.instantiatecsverror import InstantiateCSVError
 from src.item import Item
 
 
 @pytest.fixture
 def test_Item():
+    """Тестовые данные"""
     test_item1 = Item("Телевизор", 49500.00, 25)
 
     return test_item1
